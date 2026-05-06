@@ -1,0 +1,112 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Build site
+        run: |
+          mkdir -p _site
+          cp ABOUT.md _site/index.md
+          cp README.md _site/
+          cp 课程完整大纲.md _site/
+          cp 工具清单.md _site/
+          cp 课程设计文档.md _site/
+          cp -r 第0课-AI认知重构 _site/
+
+          # 创建简单的 HTML 包装
+          cat > _site/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="zh-CN">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>AI 素养训练营 - 面向非研发人员的 AI 能力提升培训</title>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5/github-markdown.min.css">
+            <style>
+              body {
+                box-sizing: border-box;
+                min-width: 200px;
+                max-width: 980px;
+                margin: 0 auto;
+                padding: 45px;
+                background-color: #0d1117;
+              }
+              .markdown-body {
+                background-color: #0d1117;
+                color: #c9d1d9;
+              }
+              .markdown-body a {
+                color: #58a6ff;
+              }
+              .markdown-body h1, .markdown-body h2, .markdown-body h3 {
+                border-bottom-color: #21262d;
+              }
+              .markdown-body table tr {
+                background-color: #0d1117;
+                border-top-color: #21262d;
+              }
+              .markdown-body table tr:nth-child(2n) {
+                background-color: #161b22;
+              }
+              .markdown-body code {
+                background-color: rgba(110,118,129,0.4);
+              }
+              .markdown-body pre {
+                background-color: #161b22;
+              }
+            </style>
+          </head>
+          <body>
+            <article class="markdown-body" id="content">
+              加载中...
+            </article>
+            <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+            <script>
+              fetch('index.md')
+                .then(response => response.text())
+                .then(text => {
+                  document.getElementById('content').innerHTML = marked.parse(text);
+                })
+                .catch(error => {
+                  document.getElementById('content').innerHTML = '<h1>加载失败</h1><p>请查看 <a href="https://github.com/AICode-Nexus/ai-literacy-bootcamp">GitHub 仓库</a></p>';
+                });
+            </script>
+          </body>
+          </html>
+          EOF
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
