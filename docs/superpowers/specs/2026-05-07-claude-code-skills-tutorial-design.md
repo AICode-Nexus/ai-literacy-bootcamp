@@ -456,5 +456,5 @@ Step 7：测试验证（10 min）
 
 - 课程内容以 VitePress 渲染，格式与现有 lesson 文件一致
 - 文件放置于 `docs/lessons/skill-workshop.md`（与其他课程同目录，但不编号）
-- VitePress 导航配置：在 `.vitepress/config.ts` 的 sidebar 中添加"实战专题"分组，包含此课程链接
+- VitePress 导航配置：在 `.vitepress/config.mts` 的 sidebar 中添加"实战专题"分组，包含此课程链接
 - 课程列表页 `courses.md` 中新增一个"实战专题"卡片区域
