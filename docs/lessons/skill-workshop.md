@@ -107,4 +107,126 @@ graph LR
 
 ---
 
-<!-- SECTION_2_PLACEHOLDER -->
+### Section 2：体验现成 Skill（20 分钟）
+
+#### 准备工作
+
+在开始之前，确认你的电脑上已经安装了 Claude Code：
+
+**检查方法**：打开终端（Mac 用"终端"应用，Windows 用 PowerShell），输入：
+
+```bash
+claude --version
+```
+
+如果看到版本号，说明已安装。如果提示"命令未找到"，请按以下步骤安装：
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+::: tip 遇到问题？
+- **提示 npm 未找到**：需要先安装 Node.js，访问 https://nodejs.org 下载安装
+- **提示权限不足**：Mac/Linux 用户在命令前加 `sudo`
+- **安装后仍找不到命令**：关闭终端重新打开
+:::
+
+#### 动手体验
+
+**第一步：启动 Claude Code**
+
+在终端输入：
+
+```bash
+claude
+```
+
+你会看到 Claude Code 的交互界面，可以开始对话了。
+
+**第二步：创建练习目录**
+
+让我们创建一个专门的练习目录，并放入示例 Skill：
+
+```bash
+mkdir -p my-skill-practice/.claude/skills
+cd my-skill-practice
+```
+
+**第三步：创建你的第一个示例 Skill**
+
+用任何文本编辑器（记事本、VS Code、甚至 TextEdit 都行）创建文件 `.claude/skills/daily-summary.md`，内容如下：
+
+```markdown
+# 日报生成
+
+把今天的工作笔记整理成简洁的日报格式。
+
+Use when the user asks to "写日报", "daily summary", or "今日总结".
+
+## 工作流程
+
+1. 从用户提供的文本中提取今日完成的工作事项
+2. 按重要程度排序
+3. 用简洁的一句话概括每项工作
+4. 如果有明日计划相关内容，单独列出
+
+## 输出格式
+
+### 📅 今日工作
+- [要点 1]
+- [要点 2]
+- ...
+
+### 📋 明日计划
+- [如有则列出，无则写"待定"]
+
+## 约束
+
+- 每个要点不超过 20 字
+- 总条目不超过 8 条
+- 不添加原文中没有的内容
+- 使用中文
+```
+
+**第四步：体验 Skill 的效果**
+
+在 Claude Code 中输入 `/daily-summary`，然后粘贴一段工作笔记：
+
+```
+今天上午开了产品评审会，讨论了 v2.0 的功能优先级。
+下午和设计师对了登录页面的改版方案，基本确定了方向。
+处理了 3 个客户反馈的 bug，其中 2 个已修复提交。
+和市场部确认了下周发布会的物料需求。
+明天要准备周五的演示 demo。
+```
+
+观察输出：AI 会按照你定义的格式，自动整理成结构化的日报。
+
+**第五步：对比体验**
+
+现在试试不用 Skill，直接把同样的文字粘贴给 Claude Code，不加任何提示词。对比两次输出：
+- 格式一样吗？
+- 哪个更符合你的需求？
+- 哪个更稳定可预测？
+
+#### 你刚才做了什么？
+
+```mermaid
+graph TD
+    A[创建 .md 文件] --> B[放入 .claude/skills/ 目录]
+    B --> C[用 /名字 调用]
+    C --> D[AI 按文件中的指令工作]
+    
+    style A fill:#e1f5ff
+    style B fill:#e1ffe1
+    style C fill:#fff4e1
+    style D fill:#f5e1ff
+```
+
+就这么简单：**写一个文件 → 放对位置 → 用斜杠调用**。
+
+接下来，我们打开这个文件，看看它的每一部分到底在做什么。
+
+---
+
+<!-- SECTION_3_PLACEHOLDER -->
