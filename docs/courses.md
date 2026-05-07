@@ -98,6 +98,21 @@
 
 </div>
 
+## 🔧 实战专题
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+
+<LessonCard
+  lessonNumber="专题"
+  title="Claude Code Skills"
+  description="打造你的 AI 专属工作流：从使用到编写自定义 Skill，零代码基础也能上手。"
+  duration="3 小时"
+  difficulty="进阶"
+  link="/lessons/skill-workshop"
+/>
+
+</div>
+
 ---
 
 ## 📊 学习建议

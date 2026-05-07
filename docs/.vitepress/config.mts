@@ -66,6 +66,12 @@ export default defineConfig({
         items: [
           { text: '第 7 课：AI 协作与安全', link: '/lessons/lesson-7' }
         ]
+      },
+      {
+        text: '实战专题',
+        items: [
+          { text: 'Claude Code Skills', link: '/lessons/skill-workshop' }
+        ]
       }
     ],
 
