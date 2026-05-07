@@ -701,7 +701,7 @@ EOF
 cd /Users/admin/work/ai-literacy-bootcamp && npm run docs:dev
 ```
 
-在浏览器中访问 http://localhost:5173/ai-literacy-bootcamp/tools.html
+在浏览器中访问 `http://localhost:5173/ai-literacy-bootcamp/tools.html`
 
 验证：
 - 页面渲染正常
