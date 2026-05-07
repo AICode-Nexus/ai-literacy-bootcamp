@@ -850,9 +850,9 @@ git remote add origin https://github.com/你的用户名/my-claude-skills.git
 git push -u origin main
 ```
 
-**方法 3：贡献到官方仓库**
+**方法 3：团队项目共享**
 
-Anthropic 维护了一个 [官方 Skills 仓库](https://github.com/anthropics/claude-code-skills)（假设存在），你可以提交 Pull Request 贡献你的 Skill。
+把 Skill 文件放在项目的 `.claude/skills/` 目录下，提交到 Git 仓库。团队成员拉取代码后，自动获得这些 Skill。
 
 ---
 
@@ -936,9 +936,9 @@ Use when the user asks to "[触发短语1]", "[触发短语2]", or [触发条件
 
 #### C. 进阶资源
 
-- **官方文档**：[Claude Code Skills 文档](https://docs.anthropic.com/claude/docs/claude-code-skills)（假设链接）
-- **社区 Skills**：[GitHub - anthropics/claude-code-skills](https://github.com/anthropics/claude-code-skills)（假设链接）
-- **提示词工程**：[Anthropic Prompt Engineering Guide](https://docs.anthropic.com/claude/docs/prompt-engineering)
+- **官方文档**：[Claude Code 文档](https://docs.anthropic.com/en/docs/claude-code/overview)
+- **提示词工程**：[Anthropic Prompt Engineering Guide](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview)
+- **Claude Code GitHub**：[github.com/anthropics/claude-code](https://github.com/anthropics/claude-code)
 
 #### D. 下一步
 
@@ -958,4 +958,4 @@ Use when the user asks to "[触发短语1]", "[触发短语2]", or [触发条件
 
 ---
 
-**返回**：[课程目录](../index.md) | **相关课程**：[Lesson 5: 进阶技巧](./lesson-5.md)
+**返回**：[课程目录](../courses.md) | **相关课程**：[第 5 课：AI 工作流自动化](./lesson-5.md)
