@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
+import { withMermaid } from 'vitepress-plugin-mermaid'
 
-export default defineConfig({
+export default withMermaid(defineConfig({
   title: 'AI 素养训练营',
   description: '面向非研发体系人员的 AI 能力提升培训课程',
   lang: 'zh-CN',
@@ -93,4 +94,4 @@ export default defineConfig({
       label: '目录'
     }
   }
-})
+}))
