@@ -277,9 +277,9 @@ graph LR
 
 ## 📚 延伸阅读
 
-- [数据分析基础知识](https://example.com)
-- [常用图表类型及使用场景](https://example.com)
-- [数据可视化最佳实践](https://example.com)
+- [Khan Academy: 统计学与数据分析](https://www.khanacademy.org/math/statistics-probability)
+- [From Data to Viz: 图表类型选择指南](https://www.data-to-viz.com/)
+- [Storytelling with Data（数据可视化经典）](https://www.storytellingwithdata.com/)
 
 ---
 

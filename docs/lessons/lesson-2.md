@@ -310,8 +310,8 @@ graph LR
 
 ## 📚 延伸阅读
 
-- [如何用 AI 提升写作效率](https://example.com)
-- [AI 写作的 10 个最佳实践](https://example.com)
+- [Anthropic: 提示词工程指南](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview)
+- [OpenAI: GPT 写作最佳实践](https://platform.openai.com/docs/guides/prompt-engineering)
 
 ---
 

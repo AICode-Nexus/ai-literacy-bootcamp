@@ -310,9 +310,9 @@ graph LR
 
 ## 📚 延伸阅读
 
-- [产品设计方法论](https://example.com)
-- [用户体验设计原则](https://example.com)
-- [PRD 撰写最佳实践](https://example.com)
+- [Nielsen Norman Group: UX 设计基础](https://www.nngroup.com/articles/)
+- [产品沉思录](https://www.pmthinking.com/)
+- [Atlassian: 如何写好 PRD](https://www.atlassian.com/agile/product-management/requirements)
 
 ---
 

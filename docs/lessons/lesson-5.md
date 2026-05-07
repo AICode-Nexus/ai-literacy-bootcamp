@@ -308,9 +308,9 @@ graph TD
 
 ## 📚 延伸阅读
 
-- [自动化工作流设计指南](https://example.com)
+- [Make 官方学院](https://www.make.com/en/academy)
 - [Zapier 官方教程](https://zapier.com/learn)
-- [AI 自动化最佳实践](https://example.com)
+- [n8n 工作流自动化文档](https://docs.n8n.io/)
 
 ---
 

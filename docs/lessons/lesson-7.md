@@ -388,9 +388,9 @@ AI 可能：
 
 ## 📚 延伸阅读
 
-- [AI 伦理指南](https://example.com)
-- [数据安全最佳实践](https://example.com)
-- [AI 版权法律解读](https://example.com)
+- [UNESCO: AI 伦理建议书](https://www.unesco.org/en/artificial-intelligence/recommendation-ethics)
+- [OWASP: AI 安全指南](https://owasp.org/www-project-ai-security-and-privacy-guide/)
+- [中国国家互联网信息办公室: 生成式 AI 管理暂行办法](http://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm)
 
 ---
 
