@@ -733,4 +733,229 @@ Use when the user asks to "改写", "rewrite", "转平台", or provides text wit
 
 ---
 
-<!-- SECTION_6_PLACEHOLDER -->
+### Section 6：测试、迭代与分享（20 分钟）
+
+你的 Skill 写完了，但这只是开始。好的 Skill 是迭代出来的。
+
+#### 迭代优化的 3 个方向
+
+```mermaid
+graph LR
+    A[初版 Skill] --> B{测试发现问题}
+    B -->|格式不稳定| C[优化输出格式]
+    B -->|质量不稳定| D[细化工作流程]
+    B -->|边界情况| E[补充约束条件]
+    C --> F[新版本]
+    D --> F
+    E --> F
+    F --> G{再次测试}
+    G -->|仍有问题| B
+    G -->|稳定可用| H[发布分享]
+    
+    style A fill:#e1f5ff
+    style H fill:#ccffcc
+```
+
+**方向 1：优化输出格式**
+
+如果输出格式不稳定（有时有表格，有时没有），试试这些方法：
+
+- 在输出格式部分加上 **完整的示例**（不只是模板，而是填好内容的例子）
+- 用 Markdown 代码块包裹模板（让 AI 更容易识别格式）
+- 在约束中加一条"严格遵守输出格式部分的结构"
+
+**方向 2：细化工作流程**
+
+如果输出质量不稳定（有时很好，有时很差），检查工作流程：
+
+- 是否有步骤太模糊？（比如"整理内容" → 改成"提取关键信息，去除重复和无关内容"）
+- 是否缺少关键步骤？（比如忘了写"检查字数"）
+- 步骤顺序是否合理？（先做什么，后做什么）
+
+**方向 3：补充约束条件**
+
+如果遇到边界情况（比如输入太短、输入格式不对），加约束：
+
+```markdown
+## 约束
+
+- 如果输入少于 50 字，提示"内容太少，无法生成周报"
+- 如果输入中没有日期信息，在输出中标注"日期：未知"
+- 如果用户未指定目标平台，先询问再改写
+```
+
+#### 版本管理
+
+Skill 文件就是普通的 Markdown，可以用 Git 管理版本：
+
+```bash
+# 初始化 Git（如果还没有）
+cd .claude/skills
+git init
+
+# 提交第一个版本
+git add weekly-report.md
+git commit -m "v1.0: 初版周报生成 Skill"
+
+# 修改后提交新版本
+git add weekly-report.md
+git commit -m "v1.1: 优化输出格式，添加字数约束"
+```
+
+这样你可以随时回退到之前的版本。
+
+#### 分享你的 Skill
+
+如果你的 Skill 很好用，可以分享给同事或社区：
+
+**方法 1：直接分享文件**
+
+把 `.claude/skills/your-skill.md` 文件发给对方，对方放到自己的 `.claude/skills/` 目录就能用。
+
+**方法 2：发布到 GitHub**
+
+```bash
+# 创建一个仓库
+mkdir my-claude-skills
+cd my-claude-skills
+git init
+
+# 复制你的 Skill 文件
+cp ~/.claude/skills/weekly-report.md ./
+
+# 写一个 README
+cat > README.md << 'EOF'
+# 我的 Claude Code Skills
+
+## 周报生成
+
+把工作笔记整理成结构化周报。
+
+### 安装
+
+```bash
+curl -o ~/.claude/skills/weekly-report.md \
+  https://raw.githubusercontent.com/你的用户名/my-claude-skills/main/weekly-report.md
+```
+
+### 使用
+
+在 Claude Code 中输入 `/weekly-report`，然后粘贴你的工作笔记。
+EOF
+
+# 提交并推送
+git add .
+git commit -m "Initial commit"
+git remote add origin https://github.com/你的用户名/my-claude-skills.git
+git push -u origin main
+```
+
+**方法 3：贡献到官方仓库**
+
+Anthropic 维护了一个 [官方 Skills 仓库](https://github.com/anthropics/claude-code-skills)（假设存在），你可以提交 Pull Request 贡献你的 Skill。
+
+---
+
+### 附录
+
+#### A. Skill 文件格式速查
+
+```markdown
+# [Skill 名称]
+
+[一句话描述这个 Skill 做什么]
+
+Use when the user asks to "[触发短语1]", "[触发短语2]", or [触发条件描述].
+
+## 工作流程
+
+1. [第一步做什么]
+2. [第二步做什么]
+...
+
+## 输出格式
+
+[用 Markdown 展示期望的输出结构]
+
+## 约束
+
+- [约束条件 1]
+- [约束条件 2]
+...
+```
+
+#### B. 常见问题
+
+**Q1：Skill 不生效怎么办？**
+
+检查清单：
+- ✅ 文件放在 `.claude/skills/` 目录下了吗？
+- ✅ 文件扩展名是 `.md` 吗？
+- ✅ 文件名和调用时的名字一致吗？（`/weekly-report` 对应 `weekly-report.md`）
+- ✅ 重启 Claude Code 了吗？
+
+**Q2：如何让 Skill 支持多语言？**
+
+在约束中加一条：
+
+```markdown
+## 约束
+
+- 根据用户输入的语言自动选择输出语言（中文输入 → 中文输出，英文输入 → 英文输出）
+```
+
+**Q3：Skill 可以调用其他 Skill 吗？**
+
+不能直接调用，但可以在工作流程中提示 AI：
+
+```markdown
+## 工作流程
+
+1. 先用 writing-plans skill 的思路分析任务
+2. 然后按本 Skill 的格式输出
+```
+
+**Q4：Skill 可以访问文件吗？**
+
+可以。在工作流程中写明：
+
+```markdown
+## 工作流程
+
+1. 读取用户指定的文件（使用 Read 工具）
+2. 提取文件中的关键信息
+...
+```
+
+**Q5：如何让 Skill 输出更稳定？**
+
+三个技巧：
+1. **输出格式部分用完整示例**（不只是模板）
+2. **约束部分加"严格遵守输出格式"**
+3. **工作流程拆得足够细**（每步只做一件事）
+
+#### C. 进阶资源
+
+- **官方文档**：[Claude Code Skills 文档](https://docs.anthropic.com/claude/docs/claude-code-skills)（假设链接）
+- **社区 Skills**：[GitHub - anthropics/claude-code-skills](https://github.com/anthropics/claude-code-skills)（假设链接）
+- **提示词工程**：[Anthropic Prompt Engineering Guide](https://docs.anthropic.com/claude/docs/prompt-engineering)
+
+#### D. 下一步
+
+学完这个专题，你可以：
+
+1. **回到主线课程**：如果你是从 [Lesson 5](./lesson-5.md) 跳过来的，现在可以回去继续学习
+2. **探索更多 Skills**：浏览社区分享的 Skills，看看别人怎么写的
+3. **写更复杂的 Skill**：尝试写一个需要多步推理、文件操作、或调用外部工具的 Skill
+
+---
+
+::: tip 恭喜你！🎉
+你已经掌握了 Claude Code Skills 的完整工作流：**用 → 看 → 改 → 写**。
+
+现在，你可以为任何重复性的工作创建自己的 AI 助手了。
+:::
+
+---
+
+**返回**：[课程目录](../index.md) | **相关课程**：[Lesson 5: 进阶技巧](./lesson-5.md)
